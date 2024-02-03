@@ -1,0 +1,10 @@
+# build
+build/
+dist/
+
+# temp
+__pycache__/
+ffmpeg.exe
+
+# idea
+.idea/

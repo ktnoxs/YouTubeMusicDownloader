@@ -1,0 +1,24 @@
+# Youtube Music Downloader
+
+Youtube 영상 링크를 주면, 사운드만 추출하는 프로그램입니다.
+
+# Library
+- yt-dlp (youtube-dl)
+- pathvalidate
+
+# Run
+
+### 1. 라이브러리 설치
+```bash
+pip install -r requirements.txt
+```
+
+### 2. ffmpeg 설치
+
+ffmpeg를 다운받고, 컴퓨터의 환경변수에 경로를 등록해야 합니다.
+혹은 `Youtube Music Downloader.exe`가 있는 폴더 안에 ffmpeg 폴더를 생성한 후, 폴더 안에 `ffmpeg.exe`파일을 넣어주세요.
+
+### 3. 프로그램 실행
+
+`Youtube Music Downloader.exe`를 실행합니다.
+영상 링크를 줘도 되고, 플레이리스트 링크도 입력 가능합니다. 또는 텍스트 파일로 링크를 입력한 뒤, 해당 텍스트파일을 입력하면 자동으로 다운로드 됩니다.
