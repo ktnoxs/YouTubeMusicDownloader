@@ -36,9 +36,9 @@ if __name__ == "__main__":
         exist_folder("temp")
 
         manager = multiprocessing.Manager()
-        shared_list = manager.list()
 
         while True:
+            shared_list = manager.list()
             url_list = command.user_prompt()
             if url_list is False:
                 print_("프로그램을 종료합니다.")
