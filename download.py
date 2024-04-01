@@ -1,3 +1,4 @@
+import os
 import multiprocessing
 from yt_dl import create_ytdl
 from pathvalidate import sanitize_filename
@@ -14,7 +15,7 @@ def download(url, shared_list):
     ytdl = create_ytdl()
     data = ytdl.extract_info(url, download=True)
     if 'entries' in data:
-        # take first item from a playlist
+        # take items from a playlist
         for _data in data['entries']:
             music_title = sanitize_filename(_data["title"])
             file_name = ytdl.prepare_filename(_data)[:-5]
