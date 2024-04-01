@@ -1,5 +1,5 @@
-from colorama import Fore, Style
-from gui import print_
+import os
+from gui import get_form, print_
 
 
 def user_prompt():
@@ -8,10 +8,14 @@ def user_prompt():
     :return: URL List
     """
     split_step = ","
-    user_input = input(f"{Fore.LIGHTYELLOW_EX}{Style.BRIGHT}YoutubeMusic{Fore.LIGHTBLACK_EX}｜{Style.RESET_ALL}Enter url : ").strip()
+    user_input = input(f"{get_form()}Enter url : ").strip()
 
     if user_input in ["exit", "exit()"]:
         return False
+
+    if user_input in ["open", "open()"]:
+        os.startfile("download")
+        return True
 
     if user_input.endswith(".txt"):
         try:
