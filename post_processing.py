@@ -14,18 +14,24 @@ def post_processing(music_title, file_name):
     import os
     for file in os.listdir('download'):
         if f"{music_title}.mp3" == file:
-            os.remove(f"{file_name}.webm")
-            print_(f"이미 존재하는 곡 : {music_title}")
+            try:
+                os.remove(f"{file_name}.webm")
+                print_(f"이미 존재하는 곡 : {music_title}")
+            except Exception as e:
+                print_(f"파일 삭제 실패 : {e}")
             return False
 
     try:
-        subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3',shell=True)
+        subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3', shell=True)
         print_(f"변환 완료 : {music_title}")
 
     except Exception as e:
         print_(f"변환 실패 : {music_title} {e}")
 
-    os.remove(f"{file_name}.webm")
+    try:
+        os.remove(f"{file_name}.webm")
+    except Exception as e:
+        print_(f"파일 삭제 실패2 : {e}")
     return True
 
 
