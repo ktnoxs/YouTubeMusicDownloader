@@ -5,6 +5,9 @@ dist/
 # temp
 __pycache__/
 ffmpeg.exe
+ffplay.exe
+ffprobe.exe
+*.txt
 
 # idea
 .idea/
