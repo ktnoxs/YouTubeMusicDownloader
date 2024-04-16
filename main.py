@@ -7,7 +7,9 @@ from available_core import get_available_core
 from ffmpeg.ffmpeg_init import register_ffmpeg
 from folder import exist_folder
 from download import download_start
+from split_music import split_start
 from post_processing import post_processing_start
+from temp import remove_temp
 
 """
 1.  파이썬 스크립트이며, if __name__ == '__main__': 구문을 사용하여 메인 코드를 실행하는 경우,
@@ -30,6 +32,7 @@ if __name__ == "__main__":
 
         available_core_count = min(working_core_count, multiprocessing.cpu_count())
         downloading_queue = multiprocessing.Queue()
+        splitting_queue = multiprocessing.Queue()
         post_processing_queue = multiprocessing.Queue()
 
         exist_folder("download")
@@ -38,6 +41,7 @@ if __name__ == "__main__":
         manager = multiprocessing.Manager()
 
         while True:
+            chater_list = manager.list()
             shared_list = manager.list()
             url_list = command.user_prompt()
             if url_list is False:
@@ -53,12 +57,19 @@ if __name__ == "__main__":
 
             download_start(
                 url_list=url_list,
+                chater_list=chater_list,
                 shared_list=shared_list,
                 available_core_count=get_available_core(working_core_count, cpu_count, len(url_list)),
                 downloading_queue=downloading_queue
+            )
+            split_start(
+                chater_list=chater_list,
+                available_core_count=get_available_core(working_core_count, cpu_count, len(chater_list)),
+                splitting_queue=splitting_queue
             )
             post_processing_start(
                 shared_list=shared_list,
                 available_core_count=get_available_core(working_core_count, cpu_count, len(list(shared_list))),
                 post_processing_queue=post_processing_queue
             )
+            remove_temp()
