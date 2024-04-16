@@ -24,7 +24,7 @@ if __name__ == "__main__":
     gui.show_logo()
     ffmpeg_flag = register_ffmpeg(__import__("os").getcwd())
     if ffmpeg_flag is False:
-        input()
+        print_("프로그램을 종료합니다.")
     else:
         working_core_count = 8
         cpu_count = multiprocessing.cpu_count()
