@@ -8,12 +8,12 @@ def user_prompt():
     :return: URL List
     """
     split_step = ","
-    user_input = input(f"{get_form()}Enter url : ").strip()
+    user_input = input(f"{get_form()}입력 : ").strip()
 
-    if user_input in ["exit", "exit()"]:
+    if user_input in "exit()":
         return False
 
-    if user_input in ["open", "open()"]:
+    if user_input in "open()":
         os.startfile("download")
         return True
 
@@ -26,5 +26,5 @@ def user_prompt():
             print_(f"{user_input} 파일이 존재하지 않습니다.")
             return True
 
-    url_list = list(map(str.strip, user_input.split(split_step)))
-    return url_list
+    # url_list = list(map(str.strip, user_input.split(split_step)))
+    return [user_input]
