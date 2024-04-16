@@ -1,2 +1,5 @@
 yt-dlp==2023.12.30
 pathvalidate==3.2.0
+pydub
+pillow
+requests
