@@ -1,37 +1,34 @@
 import multiprocessing
-import subprocess
+# import subprocess
 
+from pydub import AudioSegment
 from gui import print_
 
 
-def post_processing(music_title, file_name):
+def post_processing(music_data):
     """
     temp 폴더에서 file_name을 이용하여 확장자를 변환합니다. (ffmpeg)
-    :param music_title: 음악 제목
-    :param file_name: 파일 이름
+    :param music_data: 음악 정보
     :return: 성공 여부
     """
     import os
+    music_title = music_data["title"]
+    file_name = music_data["filename"]
+
     for file in os.listdir('download'):
         if f"{music_title}.mp3" == file:
-            try:
-                os.remove(f"{file_name}.webm")
-                print_(f"이미 존재하는 곡 : {music_title}")
-            except Exception as e:
-                print_(f"파일 삭제 실패 : {e}")
+            print_(f"이미 존재하는 곡 : {music_title}")
             return False
 
     try:
-        subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3', shell=True)
+        music = AudioSegment.from_file(f"{file_name}.webm", "webm")
+        music.export(f"download/{music_title}.mp3", format="mp3", parameters=music_data["thumbnail"])
+        # subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3', shell=True)
         print_(f"변환 완료 : {music_title}")
 
     except Exception as e:
         print_(f"변환 실패 : {music_title} {e}")
 
-    try:
-        os.remove(f"{file_name}.webm")
-    except Exception as e:
-        print_(f"파일 삭제 실패2 : {e}")
     return True
 
 
@@ -42,8 +39,8 @@ def post_processing_wrapper(queue):
     """
     try:
         while not queue.empty():
-            music_title, file_name = queue.get()
-            post_processing(music_title, file_name)
+            music_data = queue.get()
+            post_processing(music_data)
     except Exception as e:
         print_(f"Error post_processing: {e}")
 
