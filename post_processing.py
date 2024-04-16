@@ -1,7 +1,5 @@
 import multiprocessing
-# import subprocess
 
-from pydub import AudioSegment
 from gui import print_
 
 
@@ -12,6 +10,8 @@ def post_processing(music_data):
     :return: 성공 여부
     """
     import os
+    import importlib
+
     music_title = music_data["title"]
     file_name = music_data["filename"]
 
@@ -21,7 +21,8 @@ def post_processing(music_data):
             return False
 
     try:
-        music = AudioSegment.from_file(f"{file_name}.webm", "webm")
+        pydub = importlib.import_module("pydub")
+        music = pydub.AudioSegment.from_file(f"{file_name}.webm", "webm")
         music.export(f"download/{music_title}.mp3", format="mp3", parameters=music_data["thumbnail"])
         # subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3', shell=True)
         print_(f"변환 완료 : {music_title}")

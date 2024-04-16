@@ -1,13 +1,14 @@
 import multiprocessing
 import os
 
-from pydub import AudioSegment
-
 from gui import print_
 
 
 def splitting(music_data):
-    audio = AudioSegment.from_file(f'{music_data["filename"]}.webm', 'webm')
+    import importlib
+
+    pydub = importlib.import_module("pydub")
+    audio = pydub.AudioSegment.from_file(f'{music_data["filename"]}.webm', 'webm')
 
     for chapter in music_data["chapters"]:
 
