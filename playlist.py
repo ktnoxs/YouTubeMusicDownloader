@@ -12,8 +12,9 @@ def playlist(url, extract_list):
     """
     try:
         music_list = Playlist(url)
-        print_(f"플레이리스트 추출 완료 : {url}")
-        extract_list.append((url, music_list))
+        if len(music_list):
+            print_(f"플레이리스트 추출 완료 : {url} {len(music_list)}곡")
+            extract_list.append((url, music_list))
     except Exception:
         pass
 
