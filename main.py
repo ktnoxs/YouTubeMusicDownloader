@@ -6,6 +6,7 @@ from available_core import get_available_core
 
 from ffmpeg.ffmpeg_init import register_ffmpeg
 from folder import exist_folder
+from playlist import playlist_start
 from download import download_start
 from split_music import split_start
 from post_processing import post_processing_start
@@ -31,6 +32,7 @@ if __name__ == "__main__":
         print_(f"사용 가능한 코어수 : {cpu_count}")
 
         available_core_count = min(working_core_count, multiprocessing.cpu_count())
+        extract_queue = multiprocessing.Queue()
         downloading_queue = multiprocessing.Queue()
         splitting_queue = multiprocessing.Queue()
         post_processing_queue = multiprocessing.Queue()
@@ -41,6 +43,7 @@ if __name__ == "__main__":
         manager = multiprocessing.Manager()
 
         while True:
+            extract_list = manager.list()
             chater_list = manager.list()
             shared_list = manager.list()
             url_list = command.user_prompt()
@@ -55,6 +58,12 @@ if __name__ == "__main__":
                 print_("URL을 입력하세요.")
                 continue
 
+            playlist_start(
+                url_list=url_list,
+                extract_list=extract_list,
+                available_core_count=get_available_core(working_core_count, cpu_count, len(url_list)),
+                extract_queue=extract_queue
+            )
             download_start(
                 url_list=url_list,
                 chater_list=chater_list,

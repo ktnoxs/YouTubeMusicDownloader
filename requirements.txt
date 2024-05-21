@@ -3,3 +3,4 @@ pathvalidate==3.2.0
 pydub
 pillow
 requests
+pytube
