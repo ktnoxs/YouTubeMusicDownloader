@@ -1,4 +1,3 @@
-import os
 import multiprocessing
 from yt_dl import create_ytdl
 from pathvalidate import sanitize_filename
