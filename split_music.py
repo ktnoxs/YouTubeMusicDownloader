@@ -1,7 +1,10 @@
 import multiprocessing
 import os
 
+from pathvalidate import sanitize_filename
+
 from gui import print_
+from utils import remove_urls, to_fullwidth
 
 
 def splitting(music_data):
@@ -14,7 +17,7 @@ def splitting(music_data):
 
         start = chapter["start_time"]*1000
         end = chapter["end_time"]*1000
-        chapter_title = chapter["title"]
+        chapter_title = sanitize_filename(to_fullwidth(remove_urls(chapter["title"])))
 
         chapter_music = audio[start:end]
         output_name = f"{music_data['title']} - {chapter_title}"
