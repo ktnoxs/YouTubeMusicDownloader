@@ -32,7 +32,6 @@ def main():
         cpu_count = multiprocessing.cpu_count()
         print_(f"사용 가능한 코어수 : {cpu_count}")
 
-        available_core_count = min(working_core_count, multiprocessing.cpu_count())
         extract_queue = multiprocessing.Queue()
         downloading_queue = multiprocessing.Queue()
         splitting_queue = multiprocessing.Queue()
