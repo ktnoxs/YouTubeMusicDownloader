@@ -26,5 +26,7 @@ def user_prompt():
             print_(f"{user_input} 파일이 존재하지 않습니다.")
             return True
 
-    # url_list = list(map(str.strip, user_input.split(split_step)))
-    return [user_input]
+    if user_input.find(split_step) == -1:
+        return [user_input]
+    else:
+        return list(map(str.strip, user_input.split(split_step)))
