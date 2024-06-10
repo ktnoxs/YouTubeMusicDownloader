@@ -26,4 +26,4 @@ ffmpeg를 다운받고 `Youtube Music Downloader.exe`가 있는 폴더 안에 ff
 
 ### 4. Build
 
-`pyinstaller main.spec`을 통해 빌드할 수 있습니다.
+`python build.py`을 통해 빌드할 수 있습니다. 결과물은 `output` 폴더에 생성됩니다.
