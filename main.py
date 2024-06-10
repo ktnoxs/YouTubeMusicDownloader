@@ -1,16 +1,16 @@
 import multiprocessing
 
-import gui, command
-from gui import print_
-from available_core import get_available_core
+from src import command, gui
+from src.gui import print_
+from src.available_core import get_available_core
 
-from ffmpeg.ffmpeg_init import register_ffmpeg
-from folder import exist_folder
-from playlist import playlist_start
-from download import download_start
-from split_music import split_start
-from post_processing import post_processing_start
-from temp import remove_temp
+from src.ffmpeg.ffmpeg_init import register_ffmpeg
+from src.folder import exist_folder
+from src.process.playlist import playlist_start
+from src.process.download import download_start
+from src.process.split_music import split_start
+from src.process.post_processing import post_processing_start
+from src.temp import remove_temp
 
 """
 1.  파이썬 스크립트이며, if __name__ == '__main__': 구문을 사용하여 메인 코드를 실행하는 경우,
@@ -20,8 +20,9 @@ from temp import remove_temp
     메인 코드를 다시 실행하려는데, 이때 메인 코드가 재진입되면 문제가 발생할 수 있습니다.
     이를 방지하기 위해 multiprocessing.freeze_support()를 호출합니다.
 """
-if __name__ == "__main__":
-    multiprocessing.freeze_support()
+
+
+def main():
     gui.show_logo()
     ffmpeg_flag = register_ffmpeg(__import__("os").getcwd())
     if ffmpeg_flag is False:
@@ -82,3 +83,8 @@ if __name__ == "__main__":
                 post_processing_queue=post_processing_queue
             )
             remove_temp()
+
+
+if __name__ == "__main__":
+    multiprocessing.freeze_support()
+    main()

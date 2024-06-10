@@ -1,5 +1,5 @@
 import os
-from gui import get_form, print_
+from src.gui import get_form, print_
 
 
 def user_prompt():

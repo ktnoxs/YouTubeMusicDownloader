@@ -1,7 +1,7 @@
 import multiprocessing
 from pytube import Playlist
 
-from gui import print_
+from src.gui import print_
 
 
 def playlist(url, extract_list):

@@ -3,8 +3,8 @@ import os
 
 from pathvalidate import sanitize_filename
 
-from gui import print_
-from utils import remove_urls, to_fullwidth
+from src.gui import print_
+from src.utils import remove_urls, to_fullwidth
 
 
 def splitting(music_data):

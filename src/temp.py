@@ -1,6 +1,6 @@
 import os
 
-from gui import print_
+from src.gui import print_
 
 
 def remove_temp():

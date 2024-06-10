@@ -1,6 +1,7 @@
-yt-dlp==2023.12.30
+yt-dlp
 pathvalidate==3.2.0
 pydub
 pillow
 requests
 pytube
+colorama

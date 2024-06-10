@@ -1,6 +1,6 @@
 import multiprocessing
 
-from gui import print_
+from src.gui import print_
 
 
 def post_processing(music_data):

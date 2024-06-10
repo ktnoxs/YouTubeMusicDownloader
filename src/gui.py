@@ -1,5 +1,5 @@
 from colorama import Fore, Style, init
-from version import VERSION
+from src.version import VERSION
 
 # 초기화 (Windows에서는 이 단계가 필요합니다)
 init()

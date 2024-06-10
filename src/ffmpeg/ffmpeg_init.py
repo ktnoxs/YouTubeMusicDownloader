@@ -1,6 +1,6 @@
 import shutil
 
-from gui import print_
+from src.gui import print_
 
 FFMPEG_FOLDER = "ffmpeg"
 

@@ -3,7 +3,7 @@ from io import BytesIO
 import requests
 from PIL import Image
 
-from gui import print_
+from src.gui import print_
 
 
 def edit_thumbnail(music_title, image_url):

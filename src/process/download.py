@@ -1,9 +1,9 @@
 import multiprocessing
-from yt_dl import create_ytdl
+from src.yt_dl import create_ytdl
 from pathvalidate import sanitize_filename
 
-from thumbnail import edit_thumbnail
-from gui import print_
+from src.thumbnail import edit_thumbnail
+from src.gui import print_
 
 
 def get_music_data(ytdl, data):
