@@ -20,11 +20,11 @@ def user_prompt():
     if user_input.endswith(".txt"):
         try:
             with open(user_input, "r", encoding="utf-8") as f:
-                user_input = f.read()
-                split_step = None
+                user_input = f.read().split()
+                return user_input
         except:
             print_(f"{user_input} 파일이 존재하지 않습니다.")
-            return True
+        return True
 
     if user_input.find(split_step) == -1:
         return [user_input]
