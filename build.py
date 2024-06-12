@@ -7,7 +7,7 @@ message_txt = """
 https://drive.google.com/drive/folders/1ibcY8trXHPQl_84Z4HsIXmi7QzF1XaBC?usp=sharing
 
 ffmpeg 폴더에 위의 링크에서 받은 파일 3개를 넣어주세요.
-개발자라면 ffmpeg 경로를 환경변수에 등록해주셔도 됩니다.
+환경변수 등록이 가능하다면 ffmpeg 경로를 환경변수에 등록해주셔도 정상작동합니다.
 """
 
 
