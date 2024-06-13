@@ -1,29 +1,37 @@
-# Youtube Music Downloader
+# YouTube Music Downloader
 
-Youtube 영상 링크를 주면, 사운드만 추출하는 프로그램입니다.
+Console program that extracts audio from a YouTube video link.
+> For korean, [click here](https://github.com/ktnoxs/YoutubeMusic/blob/main/README-ko.md)
 
 # Library
 - yt-dlp (youtube-dl)
+- pytube (search)
+- pillow (thumbnail)
+- pydub (split the music)
 - pathvalidate
+
+# Download
+You can download it via GitHub Releases.
+> [Download Link](https://github.com/ktnoxs/YoutubeMusic/releases)
 
 # Run
 
-### 1. 라이브러리 설치
+### 1. Setup
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. ffmpeg 설치
+### 2. Install ffmpeg
 
-ffmpeg를 다운받고 `Youtube Music Downloader.exe`가 있는 폴더 안에 ffmpeg 폴더를 생성한 후, 폴더 안에 `ffmpeg.exe`, `ffplay.exe`, `ffprobe.exe`파일을 넣어주세요.
+Download ffmpeg and create a ffmpeg folder inside the folder where `Youtube Music Downloader.exe` is located. Then, put the `ffmpeg.exe`, `ffplay.exe`, and `ffprobe.exe` files inside the ffmpeg folder.
 <br><br>
-혹은 환경변수에 ffmpeg 경로(`bin`)를 등록해주시면 됩니다.
+Alternatively, you can add the ffmpeg path (`bin`) to the environment variables.
 
-### 3. 프로그램 실행
+### 3. Run
 
-`Youtube Music Downloader.exe`를 실행합니다.
-영상 링크를 줘도 되고, 플레이리스트 링크도 입력 가능합니다. 또는 텍스트 파일로 링크를 입력한 뒤, 해당 텍스트파일을 입력하면 자동으로 다운로드 됩니다. 유튜브에 검색하듯이 입력도 가능합니다.
+Run `Youtube Music Downloader.exe`.
+You can provide a video link, a playlist link, or input links via a text file(`*.txt`), which will be automatically processed for download. You can also search as you would on YouTube.
 
-### 4. Build
+# Build
 
-`python build.py`을 통해 빌드할 수 있습니다. 결과물은 `output` 폴더에 생성됩니다.
+You can build it using `python build.py`. The output will be generated in the `output` folder.
