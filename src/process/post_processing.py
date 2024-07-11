@@ -22,7 +22,8 @@ def post_processing(music_data):
 
     try:
         pydub = importlib.import_module("pydub")
-        music = pydub.AudioSegment.from_file(f"{file_name}.webm", "webm")
+        ext = music_data["ext"]
+        music = pydub.AudioSegment.from_file(f"{file_name}.{ext}", ext)
         music.export(f"download/{music_title}.mp3", format="mp3", parameters=music_data["thumbnail"])
         # subprocess.run(f'ffmpeg -loglevel error -i {file_name}.webm "download/{music_title}".mp3', shell=True)
         print_(f"변환 완료 : {music_title}")

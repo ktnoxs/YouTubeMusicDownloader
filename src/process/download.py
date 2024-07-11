@@ -7,12 +7,14 @@ from src.gui import print_
 
 
 def get_music_data(ytdl, data):
+    ext = data["audio_ext"]
     music_title = sanitize_filename(data["title"])
-    file_name = ytdl.prepare_filename(data)[:-5]
+    file_name = ytdl.prepare_filename(data)[:-len(f".{ext}")]
     thumbnail = edit_thumbnail(music_title, data["thumbnail"])
     music_data = {
         "title": music_title,
         "filename": file_name,
+        "ext": ext,
     }
     if data.get("chapters") and len(data["chapters"]) > 1:
         """

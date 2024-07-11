@@ -11,7 +11,8 @@ def splitting(music_data):
     import importlib
 
     pydub = importlib.import_module("pydub")
-    audio = pydub.AudioSegment.from_file(f'{music_data["filename"]}.webm', 'webm')
+    ext = music_data["ext"]
+    audio = pydub.AudioSegment.from_file(f'{music_data["filename"]}.{ext}', ext)
 
     for chapter in music_data["chapters"]:
 
