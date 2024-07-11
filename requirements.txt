@@ -5,3 +5,4 @@ pillow
 requests
 pytube
 colorama
+pyinstaller

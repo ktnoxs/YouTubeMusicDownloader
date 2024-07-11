@@ -13,8 +13,19 @@ ffmpeg 폴더에 위의 링크에서 받은 파일 3개를 넣어주세요.
 
 def build(command):
     """Run a system command and print the output."""
-    venv_cmd = "./venv/Scripts/pyinstaller"
-    subprocess.run([venv_cmd, command])
+    try:
+        venv_cmd = "./venv/Scripts/pyinstaller"
+        subprocess.run([venv_cmd, command])
+        return
+    except:
+        pass
+
+    try:
+        global_cmd = "pyinstaller"
+        subprocess.run([global_cmd, command])
+        return
+    except:
+        pass
 
 
 def compress():
